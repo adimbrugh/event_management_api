@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'events.apps.EventsConfig',
     'users.apps.UsersConfig',
+    'rest_framework_simplejwt',
     'rest_framework',
-    #'rest_framework_simplejwt',
-    
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -139,8 +139,25 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 2,
+    'DEFAULT_FILTER_BACKENDS': 'django_filters.rest_framework.DjangoFilterBackend',
 }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
 }
+
+#Enable Browser XSS Protection:
+SECURE_BROWSER_XSS_FILTER = True
+
+#Set X-Frame-Options
+X_FRAME_OPTIONS = 'DENY'
+
+#Enable Content Type Sniffing Protection:
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+#Redirect HTTP to HTTPS (if using HTTPS):
+SECURE_SSL_REDIRECT = True
+
+#Secure Cookies:
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
