@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from .serializers import EventSerializer
 from django.utils.timezone import now
 from api.permissions import IsOwner
+from rest_framework import filters
 from .models import Event
 
 
@@ -17,6 +18,8 @@ class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     permission_classes = [IsAuthenticated, IsOwner]
     authentication_classes = [JWTAuthentication]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter] 
+    search_fields = ['username', 'email']
 
     def get_queryset(self):
         return Event.objects.filter(organizer=self.request.user)
@@ -35,6 +38,8 @@ class EventViewSet(viewsets.ModelViewSet):
 class UpcomingEventsView(generics.ListAPIView):
     serializer_class = EventSerializer
     authentication_classes = [JWTAuthentication]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter] 
+    search_fields = ['title', 'location']
 
     def get_queryset(self):
         queryset = Event.objects.filter(date_time__gt=now())

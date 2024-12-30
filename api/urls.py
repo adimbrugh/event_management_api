@@ -13,7 +13,7 @@ router.register('users', UserViewSet, basename='user')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('upcoming/', UpcomingEventsView.as_view(), name='upcoming_events'),
+    path('upcoming-events/', UpcomingEventsView.as_view(), name='upcoming_events'),
     path('events/<int:event_id>/add-attendee/', AddAttendeeView.as_view(), name='add_attendee'),
     path('events/<int:event_id>/remove-attendee/', RemoveAttendeeView.as_view(), name='remove_attendee'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

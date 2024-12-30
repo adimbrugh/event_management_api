@@ -3,4 +3,4 @@
 django
 djangorestframework
 djangorestframework_simplejwt
-DjangoFilterBackend
+django-filter
