@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-95xkzb9r%ug6i&urc--_x4up+(f=kbn@8%m(i!zt@e8u1zzc0j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['event-management-api-dev.us-east-1.elasticbeanstalk.com', '127.0.0.1']
 
 
 # Application definition
@@ -127,6 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -156,7 +159,7 @@ X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 #Redirect HTTP to HTTPS (if using HTTPS):
-#SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 
 #Secure Cookies:
 CSRF_COOKIE_SECURE = True
