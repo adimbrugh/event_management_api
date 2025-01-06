@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-95xkzb9r%ug6i&urc--_x4up+(f=kbn@8%m(i!zt@e8u1zzc0j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['event-management-api-dev.us-east-1.elasticbeanstalk.com', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'django_filters',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
