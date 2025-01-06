@@ -22,9 +22,11 @@ class Event(models.Model):
         return self.title
 
     @property
+    #Ensure that each event has a maximum capacity, and when the capacity is reached, new attendees cannot register.
     def is_full(self):
         return self.attendees.count() >= self.capacity
 
+    #Prevent users from creating events with past dates
     def save(self, *args, **kwargs): 
         if self.date_time < timezone.now(): 
             raise ValueError("Event date cannot be in the past.") 

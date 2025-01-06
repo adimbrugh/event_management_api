@@ -16,7 +16,7 @@ from .models import Event
 
 class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = [IsAuthenticated, IsOwner] # created a custom permission class IsOwner in the UserViewSet to ensure users can only manage their own events
     authentication_classes = [JWTAuthentication]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter] 
     search_fields = ['username', 'email']
@@ -35,6 +35,7 @@ class EventViewSet(viewsets.ModelViewSet):
         serializer.save()
 
 
+#Create an endpoint to list all upcoming events with optional query filters
 class UpcomingEventsView(generics.ListAPIView):
     serializer_class = EventSerializer
     authentication_classes = [JWTAuthentication]
@@ -57,6 +58,7 @@ class UpcomingEventsView(generics.ListAPIView):
         return queryset
 
 
+#a waitlist feature where users can join if the event is fully booked.
 class AddAttendeeView(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [JWTAuthentication]
