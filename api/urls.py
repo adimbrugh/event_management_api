@@ -9,6 +9,8 @@ from users.views import UserViewSet
 from drf_yasg import openapi
 
 
+
+#API design, doucmentaion, and ensuring adherence to OpenAPI standerds
 schema_view = swagger_get_schema_view(
     openapi.Info(
         title= "Event Management API",
