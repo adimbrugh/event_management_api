@@ -1,20 +1,18 @@
 
 
-from django.urls import path, include
 from events.views import EventViewSet, UpcomingEventsView, AddAttendeeView, RemoveAttendeeView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from rest_framework.routers import DefaultRouter
-from users.views import UserViewSet
-
-
-from drf_yasg import openapi
 from drf_yasg.views import get_schema_view as swagger_get_schema_view
+from rest_framework.routers import DefaultRouter
+from django.urls import path, include
+from users.views import UserViewSet
+from drf_yasg import openapi
 
 
 schema_view = swagger_get_schema_view(
     openapi.Info(
         title= "Event Management API",
-        default_version= "2.0.0",
+        default_version= "1.0.0",
         description="API Documentation Of APP"
     ),
     public=True,
